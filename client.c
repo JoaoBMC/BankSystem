@@ -17,3 +17,4 @@ void printNewClient(Client *Client)
   printf("Aniversario: %d\n", Client->Birth);
   printf("telefone: %d\n", Client->Phone);
 }
+
