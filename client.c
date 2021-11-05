@@ -18,3 +18,5 @@ void printNewClient(Client *Client)
   printf("telefone: %d\n", Client->Phone);
 }
 
+
+
