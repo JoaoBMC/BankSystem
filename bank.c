@@ -1,9 +1,9 @@
 #include"bank.h"
+#include "menu.h"
+#include "client.h"
 #include <stdio.h>
 
-void test();
 
-void test()
-{
-    printf("oi");
-}
+
+
+
