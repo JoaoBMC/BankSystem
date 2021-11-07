@@ -2,6 +2,19 @@
 #include "menu.h"
 #include "client.h"
 #include <stdio.h>
+#include <stdlib.h>
+
+struct conta
+{
+    Client client;
+    double saldo;
+    char numero[5];
+    char agencia[5];
+    char type;
+
+};
+
+
 
 int option;
 void initBank()
@@ -40,9 +53,27 @@ void operation(int option)
     switch (option)
     {
     case 1:
-        addNewAccount();
-        printf("new client : %d",option);
+
         break;
+    case 2:
+
+        break;
+    case 3:
+
+        break;
+    case 4:
+
+        break;
+    case 5:
+
+        break;
+    case 6:
+
+        break;
+    case 7:
+        exit(0);
+        break;
+    
     
     default:
         break;

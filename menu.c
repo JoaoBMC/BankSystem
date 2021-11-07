@@ -40,7 +40,9 @@ static void cls()
 int init_menu()
 {
     printMenu();
-    return recieveOpction();
+    recieveOpction();
+    titleFunction();
+    return option;
 }
 
 void titleFunction()

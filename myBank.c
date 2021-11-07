@@ -1,7 +1,7 @@
 
 /*
     Mini Projeto pra estudo: Bank System
-    site: https://www.codewithc.com/mini-project-in-c-bank-management-system/
+    Site: https://www.codewithc.com/mini-project-in-c-bank-management-system/
 
 */
 
@@ -10,7 +10,11 @@
 
 int main(int argc, char const *argv[])
 {
-    initBank();
+    while (1)
+    {
+        initBank();
+    }
+    
     return 0;
 }
 

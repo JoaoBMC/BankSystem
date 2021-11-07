@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 
-void setNewClient(Client *client, char name[50], int birth, long long int phone)
+void setNewClient(Client *client, char name[50], int birth, double phone)
 {   
     strcpy(client->Name, name);
     client->Birth = birth;
