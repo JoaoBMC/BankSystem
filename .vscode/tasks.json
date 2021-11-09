@@ -8,7 +8,9 @@
 			"args": [
 				
                 "-c",
-                "${workspaceFolder}myBank.c",
+                "${workspaceFolder}\\src\\*.c",
+				"-L",
+				"${workspaceFolder}\\inc\\*",
 				"-fdiagnostics-color=always",
 				"-g",
 				"${file}",

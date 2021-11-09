@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+static void operation(int option);
 struct conta
 {
     Client client;
@@ -48,7 +49,7 @@ void viewDataAccunt()
 
 }
 
-void operation(int option)
+static void operation(int option)
 {
     switch (option)
     {

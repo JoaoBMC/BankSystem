@@ -7,8 +7,8 @@
                 "${workspaceRoot}",
                 "C:/MinGW/lib/gcc/mingw32/9.2.0/include",
                 "C:/MinGW/include",
-                "C:/MinGW/lib/gcc/mingw32/9.2.0/include-fixed"
-
+                "C:/MinGW/lib/gcc/mingw32/9.2.0/include-fixed",
+                "${workspaceFolder}/inc"
             ],
             "defines": [
                 "_DEBUG",
@@ -20,8 +20,10 @@
                 "path": [
                     "C:/MinGW/lib/gcc/mingw32/9.2.0/include",
                     "C:/MinGW/lib/gcc/mingw32/9.2.0/include-fixed",
-                    "C:/MinGW/include/*"
-                ], 
+                    "C:/MinGW/include/*",
+                    "${workspaceFolder}/inc"
+
+                ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
             },
