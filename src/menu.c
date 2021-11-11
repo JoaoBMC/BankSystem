@@ -1,12 +1,12 @@
 #include <stdio.h>
 
-int option;
+char option;
 
 
 static void printMenu();
 static int recieveOpction();
 static void cls();
-int init_menu();
+char init_menu();
 void titleFunction();
 
 static void printMenu()
@@ -29,7 +29,7 @@ static void printMenu()
 static int recieveOpction()
 {
     printf("Option: ");
-    scanf("%d", &option);
+    scanf("%c", &option);
     return option;
 }
 static void cls()
@@ -37,7 +37,7 @@ static void cls()
     printf("\e[H\e[2J");
 }
 
-int init_menu()
+char init_menu()
 {
     printMenu();
     recieveOpction();
@@ -50,30 +50,32 @@ void titleFunction()
     cls;
     switch (option)
     {
-    case 1:
+    case '1':
         printf("\n\tCRIANDO UMA NOVA CONTA\n\n\n");
         break;
-    case 2:
+    case '2':
         printf("\n\tATUALIZANDO UMA NOVA CONTA\n\n\n");
         break;
-    case 3:
+    case '3':
         printf("\n\tTRANSFERENCIAS\n\n\n");
         break;
-    case 4:
+    case '4':
         printf("\n\tDETALHES DA CONTA\n\n\n");
         break;
-    case 5:
+    case '5':
         printf("\n\tREMOVENDO UMA CONTA\n\n\n");
         break;
-    case 6:
+    case '6':
         printf("\n\tLISTA DE CLIENTES\n\n\n");
         break;
-    case 7:
+    case '7':
         printf("\n\tSAINDO...\n\n\n");
         
         break;
     
     default:
+        printf("Valor invalido!");
+        option = ' ';
         break;
     }
 }

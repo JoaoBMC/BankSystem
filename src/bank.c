@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static void operation(int option);
+char option;
 struct conta
 {
     Client client;
@@ -15,9 +15,8 @@ struct conta
 
 };
 
+static void operation(char option);
 
-
-int option;
 void initBank()
 {
    operation(init_menu());
@@ -49,34 +48,35 @@ void viewDataAccunt()
 
 }
 
-static void operation(int option)
+static void operation(char option)
 {
     switch (option)
     {
-    case 1:
+    case '1':
 
         break;
-    case 2:
+    case '2':
 
         break;
-    case 3:
+    case '3':
 
         break;
-    case 4:
+    case '4':
 
         break;
-    case 5:
+    case '5':
 
         break;
-    case 6:
+    case '6':
 
         break;
-    case 7:
+    case '7':
         exit(0);
         break;
     
     
     default:
+    option = ' ';
         break;
     }
 }
