@@ -3,25 +3,6 @@
 #include <string.h>
 #include <stdio.h>
 
-typedef struct Birth
-{
-    int day;
-    int month;
-    int year;
-
-}Birth;
-
-typedef struct Customer
-{
-    double ID;
-    char *Name;
-    Birth Birth;
-    char *CPF;
-    double Phone;
-    Genre Genre;
-
-}Customer;
-
 char genresStg[][GENRE_SIZE] = {"Male","Female"};
 
 static int getGenre(char setGenre);

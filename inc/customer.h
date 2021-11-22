@@ -2,8 +2,7 @@
 #define CUSTOMER_H
 
 #define GENRE_SIZE 6
-struct Birth;
-struct Customer;
+
 typedef enum Genre
 {
     Male = 0,
@@ -15,50 +14,67 @@ typedef enum {
     SUCCESS = !ERROR
 }StatusError;
 
+typedef struct Birth
+{
+    int day;
+    int month;
+    int year;
 
+}Birth;
+
+typedef struct Customer
+{
+    double ID;
+    char *Name;
+    Birth Birth;
+    char *CPF;
+    double Phone;
+    Genre Genre;
+
+}Customer;
 
 /*Retorna um objeto tipo Customer*/
-struct Customer* newCustomer(void);
+Customer* newCustomer(void);
 /*Deleta um objeto tipo Customer*/
-int delCustomer(struct Customer *customer);
+int delCustomer(Customer *customer);
 /*Retorna ID do Customer*/
-double getCustomerID(struct Customer *Customer);
+double getCustomerID(Customer *Customer);
 /*Retorna Nome do Customer*/
-char* getCustomerName(struct Customer *Customer);
+char* getCustomerName(Customer *Customer);
 /*Retorna Dia do Nascimeto do Customer*/
-int getCustomerBirthDay(struct Customer *Customer);
+int getCustomerBirthDay(Customer *Customer);
 /*Retorna Mês do Nascimeto do Customer*/
-int getCustomerBirthMonth(struct Customer *Customer);
+int getCustomerBirthMonth(Customer *Customer);
 /*Retorna Ano do Nascimeto do Customer*/
-int getCustomerBirthYear(struct Customer *Customer);
+int getCustomerBirthYear(Customer *Customer);
 /*Retorna CPF do Customer*/
-char* getCustomerCPF(struct Customer *Customer);
+char* getCustomerCPF(Customer *Customer);
 /*Retorna Telefone do Customer*/
-double getCustomerPhone(struct Customer *Customer);
+double getCustomerPhone(Customer *Customer);
 /*Retorna Genero do Customer*/
-int getCustomerGenre(struct Customer *Customer);
+int getCustomerGenre(Customer *Customer);
 
 /*Seta ID do Customer*/
-int setCustomerID(struct Customer *Customer, double ID);
+int setCustomerID(Customer *Customer, double ID);
 /*Seta Nome do Customer*/
-int setCustomerName(struct Customer *Customer, char* Name);
+int setCustomerName(Customer *Customer, char* Name);
 /*Seta Dia do Nascimento do Customer*/
-int setCustomerBirthDay(struct Customer *Customer, int BirthDay);
+int setCustomerBirthDay(Customer *Customer, int BirthDay);
 /*Seta Mês do Nascimento do Customer*/
-int setCustomerBirthMonth(struct Customer *Customer, int BirthMonth);
+int setCustomerBirthMonth(Customer *Customer, int BirthMonth);
 /*Seta Ano do Nascimento do Customer*/
-int setCustomerBirthYear(struct Customer *Customer, int BirthYear);
+int setCustomerBirthYear(Customer *Customer, int BirthYear);
 /*Seta CPF do Customer*/
-int setCustomerCPF(struct Customer *Customer, char* CPF);
+int setCustomerCPF(Customer *Customer, char* CPF);
 /*Seta Telefone do Customer*/
-int setCustomerPhone(struct Customer *Customer, double Phone);
+int setCustomerPhone(Customer *Customer, double Phone);
 /*Seta Genero do Customer*/
-int setCustomerGenre(struct Customer *Customer, char Genre);
+int setCustomerGenre(Customer *Customer, char Genre);
 
 
-int setNewCustomer(struct Customer *customer,double ID, char *name,struct Birth *Birth, char* cpf, double phone, char genre);
+int setNewCustomer(Customer *customer,double ID, char *name,Birth *Birth, char* cpf, double phone, char genre);
 
-void printNewCustomer(struct Customer *Customer);
+void printNewCustomer(Customer *Customer);
 
-struct Birth* addBirth(int day, int month, int year);
+Birth* addBirth(int day, int month, int year);
 #endif // Customer_H

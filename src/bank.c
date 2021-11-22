@@ -5,15 +5,13 @@
 #include <stdlib.h>
 
 char option;
-struct Customer* c;
-
 struct conta
 {
-    Customer oi;
-    double saldo;
-    char numero[5];
-    char agencia[5];
-    char type;
+    Customer Client;
+    double Saldo;
+    char Number[5];
+    char Agency[5];
+    char Type;
 
 };
 
