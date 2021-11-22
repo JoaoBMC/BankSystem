@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 
-char genres[][GENRE_SIZE] = {"Male","Female"};
+char genresStg[][GENRE_SIZE] = {"Male","Female"};
 
 static int getGenre(char setGenre);
 static int setBirth(Customer *Customer, Birth *birth);
@@ -25,12 +25,23 @@ static int getGenre(char setGenre)
   else
     return -1;
 }
+Customer* newCustomer(void)
+{
+ Customer* customer;
+ customer = malloc(sizeof(Customer));
+ return customer;
+}
+int delCustomer(Customer *customer)
+{
+  free(customer);
+  return SUCCESS;
+}
 // ----------------------- Gets Customer -------------------------//
 double getCustomerID(Customer *Customer)
 {
   return Customer->ID;
 }
-char getCustomerName(Customer *Customer)
+char* getCustomerName(Customer *Customer)
 {
   return Customer->Name;
 }
@@ -46,7 +57,7 @@ int getCustomerBirthYear(Customer *Customer)
 {
   return Customer->Birth.year;
 }
-char getCustomerCPF(Customer *Customer)
+char* getCustomerCPF(Customer *Customer)
 {
   return Customer->CPF;
 }
@@ -58,27 +69,76 @@ int getCustomerGenre(Customer *Customer)
 {
   return Customer->Genre;
 }
-// ----------------------- End Gets Customer -------------------------//
+// ----------------------- End Gets Customer ---------------------//
+
+// ----------------------- Sets Customer -------------------------//
+int setCustomerID(Customer *Customer, double ID)
+{
+  Customer->ID = ID;
+  return SUCCESS; 
+}
+int setCustomerName(Customer *Customer, char* Name)
+{
+  Customer->Name = Name;
+  return SUCCESS;
+}
+int setCustomerBirthDay(Customer *Customer, int BirthDay)
+{
+  Customer->Birth.day = BirthDay;
+  return SUCCESS;
+}
+int setCustomerBirthMonth(Customer *Customer, int BirthMonth)
+{
+  Customer->Birth.month = BirthMonth;
+  return SUCCESS;
+}
+int setCustomerBirthYear(Customer *Customer, int BirthYear)
+{
+  Customer->Birth.year = BirthYear;
+  return SUCCESS;
+}
+int setCustomerCPF(Customer *Customer, char* CPF)
+{
+  Customer->CPF = CPF;
+  return SUCCESS;
+}
+int setCustomerPhone(Customer *Customer, double Phone)
+{
+  Customer->Phone = Phone;
+  return SUCCESS;
+}
+int setCustomerGenre(Customer *Customer, char Genre)
+{
+  Customer->Genre = getGenre(Genre);
+  return SUCCESS;
+}
+// ----------------------- End Sets Customer -------------------------//
 
 
 void printNewCustomer(Customer *Customer)
 {   
-  printf("ID: %.0lf\n",Customer->ID);
-  printf("Name: %s\n",Customer->Name);
-  printf("Birth: %d/ %d/%d\n", Customer->Birth.day,Customer->Birth.month,Customer->Birth.year);
-  printf("CPF: %s\n",Customer->CPF);
-  printf("Phone %.0lf\n",Customer->Phone);
-  printf("Genre: %s\n", genres[Customer->Genre]);
+  printf("ID: %.0lf\n",getCustomerID(Customer));
+  printf("Name: %s\n",getCustomerName(Customer));
+  printf("Birth: %d/%d/%d\n", getCustomerBirthDay(Customer),getCustomerBirthMonth(Customer),getCustomerBirthYear(Customer));
+  printf("CPF: %s\n",getCustomerCPF(Customer));
+  printf("Phone %.0lf\n",getCustomerPhone(Customer));
+  printf("Genre: %s\n", genresStg[getCustomerGenre(Customer)]);
 }
 
-int setNewCustomer(Customer *Customer,double ID, char name[NAME_SIZE], Birth *birth, char cpf[CPF_SIZE], double phone, char genre)
+int setNewCustomer(Customer *customer,double ID, char *name, Birth *birth, char* cpf, double phone, char genre)
 {   
- 
-  Customer->ID = ID;
-  memcpy(Customer->Name,name,strlen(name));
-  setBirth(Customer,birth);
-  memcpy(Customer->CPF,cpf,strlen(cpf));
-  Customer->Phone = phone;
-  Customer->Genre = getGenre(genre);
-  return SUCCESS;
+  if( 
+      setCustomerID(customer,ID) &&
+      setCustomerName(customer,name) &&
+      setCustomerBirthDay(customer, birth->day) &&
+      setCustomerBirthMonth(customer,birth->month) &&
+      setCustomerBirthYear(customer, birth->year) &&
+      setCustomerCPF(customer, cpf) &&
+      setCustomerPhone(customer, phone) &&
+      setCustomerGenre(customer, genre)
+    )
+    {
+      return SUCCESS;
+    }else
+      return ERROR;
 }

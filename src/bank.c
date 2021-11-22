@@ -1,13 +1,13 @@
 #include"bank.h"
 #include "menu.h"
-#include "client.h"
+#include "customer.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 char option;
 struct conta
 {
-    Client client;
+    Customer client;
     double saldo;
     char numero[5];
     char agencia[5];
