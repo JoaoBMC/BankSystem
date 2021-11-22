@@ -10,6 +10,7 @@ static int getGenre(char setGenre);
 static int setBirth(Client *client, Birth *birth);
 int setNewClient(Client *client,double ID, char name[NAME_SIZE], Birth *birth, char cpf[CPF_SIZE], double phone, char genre)
 {   
+ 
   client->ID = ID;
   memcpy(client->Name,name,strlen(name));
   setBirth(client,birth);
