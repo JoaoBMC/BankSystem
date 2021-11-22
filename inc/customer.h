@@ -1,5 +1,5 @@
-#if !defined(CLIENT_H)
-#define CLIENT_H
+#if !defined(CUSTOMER_H)
+#define CUSTOMER_H
 
 #define NAME_SIZE 50
 #define CPF_SIZE 13
@@ -10,6 +10,12 @@ typedef enum Genre
     male = 0,
     female = 1,
 }Genre;
+
+typedef enum {
+    ERROR = 0,
+    SUCCESS = !ERROR
+}StatusError;
+
 typedef struct Birth
 {
     int day;
@@ -18,7 +24,7 @@ typedef struct Birth
 
 }Birth;
 
-typedef struct Client
+typedef struct Customer
 {
     double ID;
     char Name[NAME_SIZE];
@@ -26,11 +32,12 @@ typedef struct Client
     char CPF[CPF_SIZE];
     double Phone;
     Genre Genre;
-}Client;
 
-int setNewClient(Client *client,double ID, char name[NAME_SIZE], 
+}Customer;
+
+int setNewCustomer(Customer *Customer,double ID, char name[NAME_SIZE], 
                  Birth *birth, char cpf[CPF_SIZE], double phone, char genre);
 
-void printNewClient(Client *Client);
+void printNewCustomer(Customer *Customer);
 
-#endif // CLIENT_H
+#endif // Customer_H
