@@ -8,6 +8,9 @@ char genres[][GENRE_SIZE] = {"Male","Female"};
 
 static int getGenre(char setGenre);
 static int setBirth(Client *client, Birth *birth);
+
+
+
 int setNewClient(Client *client,double ID, char name[NAME_SIZE], Birth *birth, char cpf[CPF_SIZE], double phone, char genre)
 {   
   client->ID = ID;
@@ -42,6 +45,15 @@ void printNewClient(Client *Client)
   printf("CPF: %s\n",Client->CPF);
   printf("Phone %.0lf\n",Client->Phone);
   printf("Genre: %s\n", genres[Client->Genre]);
+}
+
+double getID(Client *Client)
+{
+  return Client->ID;
+}
+char getName(Client *Client)
+{
+  return *Client->Name;
 }
 
 
