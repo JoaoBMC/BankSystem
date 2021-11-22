@@ -3,111 +3,131 @@
 #include <string.h>
 #include <stdio.h>
 
+typedef struct Birth
+{
+    int day;
+    int month;
+    int year;
+
+}Birth;
+
+typedef struct Customer
+{
+    double ID;
+    char *Name;
+    Birth Birth;
+    char *CPF;
+    double Phone;
+    Genre Genre;
+
+}Customer;
 
 char genresStg[][GENRE_SIZE] = {"Male","Female"};
 
 static int getGenre(char setGenre);
-static int setBirth(Customer *Customer, Birth *birth);
 
-static int setBirth(Customer *Customer, Birth *birth)
+Birth* addBirth(int day, int month, int year)
 {
-  Customer->Birth.day = birth->day;
-  Customer->Birth.month = birth->month;
-  Customer->Birth.year = birth->year;
+  Birth* birth;
+  birth = malloc(sizeof(Birth));
+  birth->day = day;
+  birth->month = month;
+  birth->year = year;
+  return birth;
 }
 
 static int getGenre(char setGenre)
 {
   if (setGenre == 'M' || setGenre == 'm') 
-    return male;
+    return Male;
   else if (setGenre == 'F' || setGenre == 'f')
-    return female;
+    return Female;
   else
     return -1;
 }
-Customer* newCustomer(void)
+struct Customer* newCustomer(void)
 {
  Customer* customer;
- customer = malloc(sizeof(Customer));
+ customer = malloc(sizeof(struct Customer));
  return customer;
 }
-int delCustomer(Customer *customer)
+int delCustomer(struct Customer *customer)
 {
   free(customer);
   return SUCCESS;
 }
 // ----------------------- Gets Customer -------------------------//
-double getCustomerID(Customer *Customer)
+double getCustomerID(struct Customer *Customer)
 {
   return Customer->ID;
 }
-char* getCustomerName(Customer *Customer)
+char* getCustomerName(struct Customer *Customer)
 {
   return Customer->Name;
 }
-int getCustomerBirthDay(Customer *Customer)
+int getCustomerBirthDay(struct Customer *Customer)
 {
   return Customer->Birth.day;
 }
-int getCustomerBirthMonth(Customer *Customer)
+int getCustomerBirthMonth(struct Customer *Customer)
 {
   return Customer->Birth.month;
 }
-int getCustomerBirthYear(Customer *Customer)
+int getCustomerBirthYear(struct Customer *Customer)
 {
   return Customer->Birth.year;
 }
-char* getCustomerCPF(Customer *Customer)
+char* getCustomerCPF(struct Customer *Customer)
 {
   return Customer->CPF;
 }
-double getCustomerPhone(Customer *Customer)
+double getCustomerPhone(struct Customer *Customer)
 {
   return Customer->Phone;
 }
-int getCustomerGenre(Customer *Customer)
+int getCustomerGenre(struct Customer *Customer)
 {
   return Customer->Genre;
 }
 // ----------------------- End Gets Customer ---------------------//
 
 // ----------------------- Sets Customer -------------------------//
-int setCustomerID(Customer *Customer, double ID)
+int setCustomerID(struct Customer *Customer, double ID)
 {
   Customer->ID = ID;
   return SUCCESS; 
 }
-int setCustomerName(Customer *Customer, char* Name)
+int setCustomerName(struct Customer *Customer, char* Name)
 {
   Customer->Name = Name;
   return SUCCESS;
 }
-int setCustomerBirthDay(Customer *Customer, int BirthDay)
+int setCustomerBirthDay(struct Customer *Customer, int BirthDay)
 {
   Customer->Birth.day = BirthDay;
   return SUCCESS;
 }
-int setCustomerBirthMonth(Customer *Customer, int BirthMonth)
+int setCustomerBirthMonth(struct Customer *Customer, int BirthMonth)
 {
   Customer->Birth.month = BirthMonth;
   return SUCCESS;
 }
-int setCustomerBirthYear(Customer *Customer, int BirthYear)
+int setCustomerBirthYear(struct Customer *Customer, int BirthYear)
 {
   Customer->Birth.year = BirthYear;
   return SUCCESS;
 }
-int setCustomerCPF(Customer *Customer, char* CPF)
+int setCustomerCPF(struct Customer *Customer, char* CPF)
 {
   Customer->CPF = CPF;
   return SUCCESS;
 }
-int setCustomerPhone(Customer *Customer, double Phone)
+int setCustomerPhone(struct Customer *Customer, double Phone)
 {
   Customer->Phone = Phone;
   return SUCCESS;
 }
-int setCustomerGenre(Customer *Customer, char Genre)
+int setCustomerGenre(struct Customer *Customer, char Genre)
 {
   Customer->Genre = getGenre(Genre);
   return SUCCESS;
@@ -115,7 +135,7 @@ int setCustomerGenre(Customer *Customer, char Genre)
 // ----------------------- End Sets Customer -------------------------//
 
 
-void printNewCustomer(Customer *Customer)
+void printNewCustomer(struct Customer *Customer)
 {   
   printf("ID: %.0lf\n",getCustomerID(Customer));
   printf("Name: %s\n",getCustomerName(Customer));
@@ -125,16 +145,16 @@ void printNewCustomer(Customer *Customer)
   printf("Genre: %s\n", genresStg[getCustomerGenre(Customer)]);
 }
 
-int setNewCustomer(Customer *customer,double ID, char *name, Birth *birth, char* cpf, double phone, char genre)
+int setNewCustomer(struct Customer *customer,double ID, char *name, struct Birth *birth, char* cpf, double phone, char genre)
 {   
   if( 
-      setCustomerID(customer,ID) &&
-      setCustomerName(customer,name) &&
-      setCustomerBirthDay(customer, birth->day) &&
+      setCustomerID(customer,ID)                   &&
+      setCustomerName(customer,name)               &&
+      setCustomerBirthDay(customer, birth->day)    &&
       setCustomerBirthMonth(customer,birth->month) &&
-      setCustomerBirthYear(customer, birth->year) &&
-      setCustomerCPF(customer, cpf) &&
-      setCustomerPhone(customer, phone) &&
+      setCustomerBirthYear(customer, birth->year)  &&
+      setCustomerCPF(customer, cpf)                &&
+      setCustomerPhone(customer, phone)            &&
       setCustomerGenre(customer, genre)
     )
     {

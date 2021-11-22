@@ -10,15 +10,11 @@
 
 int main(int argc, char const *argv[])
 {
-    Customer* c;
-    c = newCustomer();
-    Birth bir;
-    bir.day = 07;
-    bir.month = 03;
-    bir.year = 1996;
-    setNewCustomer(c,20325649942,"joao batista menezes chagas",&bir,"016.979.703-11",999714002,'m');
+    struct Customer* c = newCustomer();
+    setNewCustomer(c,20325649942,"joao batista menezes chagas",addBirth(7,3,1996),"016.979.703-11",999714002,'M');
+    
     printNewCustomer(c);
     delCustomer(c);
-    
+
     return 0;
 }

@@ -5,9 +5,11 @@
 #include <stdlib.h>
 
 char option;
+struct Customer* c;
+
 struct conta
 {
-    Customer client;
+    Customer oi;
     double saldo;
     char numero[5];
     char agencia[5];
