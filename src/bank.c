@@ -5,27 +5,39 @@
 #include <stdlib.h>
 
 char option;
-struct conta
+
+typedef struct Account
 {
     Customer Client;
     double Saldo;
-    char Number[5];
-    char Agency[5];
+    char *Number;
+    char *Agency;
     char Type;
 
-};
+}Account;
 
 static void operation(char option);
+static Account createNewAccount();
 
-void initBank()
+Account createNewAccount()
+{
+    
+}
+
+int initBank()
 {
    operation(init_menu());
 }
 
 
-void addNewAccount()
+int addNewAccount()
 {
-
+    if (setNewCustomer)
+    {
+        return 1;
+    }
+    
+    return 0;
 }
 void transact()
 {
