@@ -72,7 +72,7 @@ int setCustomerPhone(Customer *Customer, double Phone);
 int setCustomerGenre(Customer *Customer, char Genre);
 
 
-int setNewCustomer(Customer *customer,double ID, char *name,Birth *Birth, char* cpf, double phone, char genre);
+Customer setNewCustomer(Customer *customer,double ID, char *name,Birth *Birth, char* cpf, double phone, char genre);
 
 void printNewCustomer(Customer *Customer);
 

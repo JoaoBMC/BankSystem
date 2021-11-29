@@ -9,7 +9,7 @@ char option;
 typedef struct Account
 {
     Customer Client;
-    double Saldo;
+    double Balance;
     char *Number;
     char *Agency;
     char Type;
@@ -17,11 +17,18 @@ typedef struct Account
 }Account;
 
 static void operation(char option);
-static Account createNewAccount();
 
-Account createNewAccount()
+Account* createNewAccount()
 {
-    
+    Account* account;
+    account = malloc(sizeof(Account));
+    return account;
+}
+
+int delAccount(Account* account)
+{
+    free(account);
+    return SUCCESS;
 }
 
 int initBank()
@@ -30,15 +37,23 @@ int initBank()
 }
 
 
-int addNewAccount()
+int addNewAccount(Account* Account)
 {
-    if (setNewCustomer)
-    {
-        return 1;
-    }
     
-    return 0;
+    
+    return SUCCESS;
 }
+Account setNewAccount(Account* account, Customer* customer, double balance, char *number,char *agency, char type)
+{
+    account = createNewAccount();
+    account->Client = *customer;
+    account ->Balance = balance;
+    account->Number = number;
+    account->Agency = agency;
+    account->Type = type;
+    return *account;
+}
+
 void transact()
 {
 
