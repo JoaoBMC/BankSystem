@@ -129,6 +129,7 @@ void printNewCustomer(Customer *Customer)
 
 int setNewCustomer(Customer *customer,double ID, char *name, struct Birth *birth, char* cpf, double phone, char genre)
 {   
+  customer = newCustomer();
   if( 
       setCustomerID(customer,ID)                   &&
       setCustomerName(customer,name)               &&

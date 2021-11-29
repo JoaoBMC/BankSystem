@@ -17,11 +17,18 @@ typedef struct Account
 }Account;
 
 static void operation(char option);
-static Account createNewAccount();
 
-Account createNewAccount()
+Account *createNewAccount(void)
 {
-    
+    Account* account;
+    account = malloc(sizeof(Account));
+    return account;
+}
+
+int delAccount(Account *Acccount)
+{
+    free(Acccount);
+    return SUCCESS;
 }
 
 int initBank()
@@ -32,8 +39,10 @@ int initBank()
 
 int addNewAccount()
 {
+
     if (setNewCustomer)
     {
+
         return 1;
     }
     
