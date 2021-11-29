@@ -127,8 +127,9 @@ void printNewCustomer(Customer *Customer)
   printf("Genre: %s\n", genresStg[getCustomerGenre(Customer)]);
 }
 
-int setNewCustomer(Customer *customer,double ID, char *name, struct Birth *birth, char* cpf, double phone, char genre)
+Customer setNewCustomer(struct Customer *customer,double ID, char *name, struct Birth *birth, char* cpf, double phone, char genre)
 {   
+<<<<<<< HEAD
   customer = newCustomer();
   if( 
       setCustomerID(customer,ID)                   &&
@@ -144,4 +145,18 @@ int setNewCustomer(Customer *customer,double ID, char *name, struct Birth *birth
       return SUCCESS;
     }else
       return ERROR;
+=======
+   
+      setCustomerID(customer,ID);                   
+      setCustomerName(customer,name);
+      setCustomerBirthDay(customer, birth->day);    
+      setCustomerBirthMonth(customer,birth->month);
+      setCustomerBirthYear(customer, birth->year);
+      setCustomerCPF(customer, cpf);              
+      setCustomerPhone(customer, phone);          
+      setCustomerGenre(customer, genre);
+    
+      return *customer;
+    
+>>>>>>> e6becf1794d2ca990330aaa0b1f1d82d0caa21fe
 }

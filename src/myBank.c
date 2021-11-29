@@ -6,7 +6,8 @@
 */
 
 #include <stdio.h>
-#include "customer.h"
+//#include "customer.h"
+#include "bank.h"
 
 int main(int argc, char const *argv[])
 {
