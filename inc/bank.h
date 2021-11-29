@@ -4,14 +4,24 @@
 typedef enum AccountType
 {
     Savings     = 0,
-    Salary      = 0,
-    checking    = 0,
-    university   = 0
+    Salary      = 1,
+    checking    = 2,
+    university  = 3
 
 }AccountType;
 
-struct Account;
-struct Account setNewAccount(struct Account* account, struct Customer* customer, double balance, char *number,char *agency, char type);
+typedef struct Account
+{
+    struct Customer;
+    double Balance;
+    char *Number;
+    char *Agency;
+    char Type;
+
+}Account;
+
+Account *createNewAccount(void);
+struct Account setNewAccount(struct Account* account, double balance, char *number,char *agency, char type);
 int initBank();
 int addNewAccount();
 void transact();

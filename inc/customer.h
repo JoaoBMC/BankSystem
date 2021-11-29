@@ -32,7 +32,7 @@ typedef struct Customer
     Genre Genre;
 
 }Customer;
-
+extern struct Customer;
 /*Retorna um objeto tipo Customer*/
 Customer* newCustomer(void);
 /*Deleta um objeto tipo Customer*/

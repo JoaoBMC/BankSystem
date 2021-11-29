@@ -129,23 +129,6 @@ void printNewCustomer(Customer *Customer)
 
 Customer setNewCustomer(struct Customer *customer,double ID, char *name, struct Birth *birth, char* cpf, double phone, char genre)
 {   
-<<<<<<< HEAD
-  customer = newCustomer();
-  if( 
-      setCustomerID(customer,ID)                   &&
-      setCustomerName(customer,name)               &&
-      setCustomerBirthDay(customer, birth->day)    &&
-      setCustomerBirthMonth(customer,birth->month) &&
-      setCustomerBirthYear(customer, birth->year)  &&
-      setCustomerCPF(customer, cpf)                &&
-      setCustomerPhone(customer, phone)            &&
-      setCustomerGenre(customer, genre)
-    )
-    {
-      return SUCCESS;
-    }else
-      return ERROR;
-=======
    
       setCustomerID(customer,ID);                   
       setCustomerName(customer,name);
@@ -158,5 +141,4 @@ Customer setNewCustomer(struct Customer *customer,double ID, char *name, struct 
     
       return *customer;
     
->>>>>>> e6becf1794d2ca990330aaa0b1f1d82d0caa21fe
 }
