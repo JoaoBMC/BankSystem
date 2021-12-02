@@ -5,6 +5,7 @@
 #include <stdlib.h>
 
 char option;
+<<<<<<< HEAD
 typedef struct Account
 {
     Customer Client;
@@ -15,9 +16,13 @@ typedef struct Account
 
 }Account;
 
+=======
+
+struct Customer;
+>>>>>>> 7426cc98c5cd54bf96fbff00bf5d86f574951f16
 static void operation(char option);
 
-Account* createNewAccount()
+Account *createNewAccount(void)
 {
     Account* account;
     account = malloc(sizeof(Account));
@@ -42,11 +47,17 @@ int addNewAccount(Account* Account)
     
     return SUCCESS;
 }
+<<<<<<< HEAD
 struct Account setNewAccount(Account* account, Customer* customer, double balance, char *number,char *agency, char type)
 {
     account = createNewAccount();
     account->Client = *customer;
     account->Balance = balance;
+=======
+Account setNewAccount(Account* account, double balance, char *number,char *agency, char type)
+{
+    account ->Balance = balance;
+>>>>>>> 7426cc98c5cd54bf96fbff00bf5d86f574951f16
     account->Number = number;
     account->Agency = agency;
     account->Type = type;

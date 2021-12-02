@@ -4,9 +4,9 @@
 typedef enum AccountType
 {
     Savings     = 0,
-    Salary      = 0,
-    checking    = 0,
-    university   = 0
+    Salary      = 1,
+    checking    = 2,
+    university  = 3
 
 }AccountType;
 

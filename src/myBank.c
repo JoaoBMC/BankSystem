@@ -12,6 +12,8 @@
 int main(int argc, char const *argv[])
 {
     struct Customer* c = newCustomer();
+    struct Account* acc = createNewAccount();
+    
     setNewCustomer(c,20325649942,"joao batista menezes chagas",addBirth(7,3,1996),"016.979.703-11",999714002,'M');
     
     printNewCustomer(c);
