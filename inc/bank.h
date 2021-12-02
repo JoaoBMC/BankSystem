@@ -10,8 +10,9 @@ typedef enum AccountType
 
 }AccountType;
 
+
 struct Account;
-struct Account setNewAccount(struct Account* account, struct Customer* customer, double balance, char *number,char *agency, char type);
+Account setNewAccount(struct Account* account, struct Customer* customer, double balance, char *number,char *agency, char type);
 int initBank();
 int addNewAccount();
 void transact();

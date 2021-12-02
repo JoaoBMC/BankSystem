@@ -5,7 +5,6 @@
 #include <stdlib.h>
 
 char option;
-
 typedef struct Account
 {
     Customer Client;
@@ -43,11 +42,11 @@ int addNewAccount(Account* Account)
     
     return SUCCESS;
 }
-Account setNewAccount(Account* account, Customer* customer, double balance, char *number,char *agency, char type)
+struct Account setNewAccount(Account* account, Customer* customer, double balance, char *number,char *agency, char type)
 {
     account = createNewAccount();
     account->Client = *customer;
-    account ->Balance = balance;
+    account->Balance = balance;
     account->Number = number;
     account->Agency = agency;
     account->Type = type;
