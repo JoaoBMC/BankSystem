@@ -1,27 +1,18 @@
 #include"bank.h"
 #include "menu.h"
-#include "customer.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 char option;
-<<<<<<< HEAD
-typedef struct Account
-{
-    Customer Client;
-    double Balance;
-    char *Number;
-    char *Agency;
-    char Type;
-
-}Account;
-
-=======
 
 struct Customer;
->>>>>>> 7426cc98c5cd54bf96fbff00bf5d86f574951f16
 static void operation(char option);
-
+static char accountTypesStg[][10] = {
+    "Savings",
+    "Salary",
+    "Checking",
+    "University"
+};
 Account *createNewAccount(void)
 {
     Account* account;
@@ -43,21 +34,13 @@ int initBank()
 
 int addNewAccount(Account* Account)
 {
-    
-    
     return SUCCESS;
 }
-<<<<<<< HEAD
-struct Account setNewAccount(Account* account, Customer* customer, double balance, char *number,char *agency, char type)
+
+Account setNewAccount(Account* account, Customer* customer, double balance, char *number,char *agency, int type)
 {
-    account = createNewAccount();
     account->Client = *customer;
-    account->Balance = balance;
-=======
-Account setNewAccount(Account* account, double balance, char *number,char *agency, char type)
-{
     account ->Balance = balance;
->>>>>>> 7426cc98c5cd54bf96fbff00bf5d86f574951f16
     account->Number = number;
     account->Agency = agency;
     account->Type = type;
@@ -80,8 +63,16 @@ void viewListAccunt()
 {
 
 }
-void viewDataAccunt()
+void viewDataAccunt(Account *account)
 {
+    
+   printf("------------ ACCOUNT DATA ------------\n");
+   printf("Agency: %s\n",account->Agency);
+   printf("Account Number: %s\n",account->Number);
+   printf("Account Type: %s\n",accountTypesStg[account->Type]);
+   printf("Balance: %.2lf\n",account->Balance);
+   printf("------- ACCOUNT HOLDER DETAILS -------\n");
+   printNewCustomer(&account->Client);
 
 }
 

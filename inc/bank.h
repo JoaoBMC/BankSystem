@@ -1,24 +1,33 @@
 #if !defined(BANK)
 #define BANK
-
+#include "customer.h"
 typedef enum AccountType
 {
     Savings     = 0,
     Salary      = 1,
-    checking    = 2,
-    university  = 3
+    Checking    = 2,
+    University  = 3
 
 }AccountType;
 
+typedef struct Account
+{
+    Customer Client;
+    double Balance;
+    char *Number;
+    char *Agency;
+    int Type;
 
-struct Account;
-Account setNewAccount(struct Account* account, struct Customer* customer, double balance, char *number,char *agency, char type);
+}Account;
+
+Account *createNewAccount(void);
+Account setNewAccount(struct Account* account, Customer* customer, double balance, char *number,char *agency, int type);
 int initBank();
 int addNewAccount();
 void transact();
 void editAcconut();
 void deletAcconut();
 void viewListAccunt();
-void viewDataAccunt();
+void viewDataAccunt(Account *account);
 
 #endif // BANK

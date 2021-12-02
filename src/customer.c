@@ -33,6 +33,7 @@ struct Customer* newCustomer(void)
  customer = malloc(sizeof(struct Customer));
  return customer;
 }
+
 int delCustomer(Customer *customer)
 {
   free(customer);
@@ -127,9 +128,9 @@ void printNewCustomer(Customer *Customer)
   printf("Genre: %s\n", genresStg[getCustomerGenre(Customer)]);
 }
 
-Customer setNewCustomer(struct Customer *customer,double ID, char *name, struct Birth *birth, char* cpf, double phone, char genre)
+Customer *setNewCustomer(double ID, char *name, struct Birth *birth, char* cpf, double phone, char genre)
 {   
-   
+      Customer *customer = newCustomer();
       setCustomerID(customer,ID);                   
       setCustomerName(customer,name);
       setCustomerBirthDay(customer, birth->day);    
@@ -139,6 +140,6 @@ Customer setNewCustomer(struct Customer *customer,double ID, char *name, struct 
       setCustomerPhone(customer, phone);          
       setCustomerGenre(customer, genre);
     
-      return *customer;
+      return customer;
     
 }

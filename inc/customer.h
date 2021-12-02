@@ -32,7 +32,6 @@ typedef struct Customer
     Genre Genre;
 
 }Customer;
-extern struct Customer;
 /*Retorna um objeto tipo Customer*/
 Customer* newCustomer(void);
 /*Deleta um objeto tipo Customer*/
@@ -72,7 +71,7 @@ int setCustomerPhone(Customer *Customer, double Phone);
 int setCustomerGenre(Customer *Customer, char Genre);
 
 
-Customer setNewCustomer(Customer *customer,double ID, char *name,Birth *Birth, char* cpf, double phone, char genre);
+Customer *setNewCustomer(double ID, char *name,Birth *Birth, char* cpf, double phone, char genre);
 
 void printNewCustomer(Customer *Customer);
 
