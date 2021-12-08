@@ -3,7 +3,7 @@
 #include "customer.h"
 
 #define MAX_ACC_LIST_SIZE   500
-
+int lastAcc;
 typedef enum AccountType
 {
     Savings     = 0,
@@ -31,7 +31,7 @@ int initBank();
 int addNewAccount(Account *account, Customer *customer, double balance, char *number, char *agency, int type);
 void transact();
 void editAcconut();
-void deletAcconut();
+int delAcconut(char *NumberAcc);
 void viewListAccunt(Account *account);
 int viewDataAccunt(Account *account);
 

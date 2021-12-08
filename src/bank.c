@@ -13,8 +13,7 @@ static char accountTypesStg[][10] = {
     "Savings",
     "Salary",
     "Checking",
-    "University"
-    };
+    "University"};
 Account *createNewAccount(void)
 {
     Account *account;
@@ -35,12 +34,13 @@ int initBank()
 
 int addNewAccount(Account *account, Customer *customer, double balance, char *number, char *agency, int type)
 {
-    if(lastAcc < MAX_ACC_LIST_SIZE){
-        accList[lastAcc++] = setNewAccount(account,customer,balance,number,agency,type);
+    if (lastAcc < MAX_ACC_LIST_SIZE)
+    {
+        accList[lastAcc++] = setNewAccount(account, customer, balance, number, agency, type);
         return SUCCESS;
-    }else
+    }
+    else
         return ERROR;
-
 }
 
 Account setNewAccount(Account *account, Customer *customer, double balance, char *number, char *agency, int type)
@@ -59,23 +59,34 @@ void transact()
 void editAcconut()
 {
 }
-void deletAcconut()
+int delAcconut(char *NumberAcc)
 {
+    for (int i = 0; i < lastAcc; i++)
+    {
+        if (accList[i].Number == NumberAcc)
+        {
+            for (int j = i; j < lastAcc - 1; j++)
+                accList[j].Number = accList[j + 1].Number;
+            lastAcc--;
+        }
+    }
 }
+
 void viewListAccunt(Account *account)
 {
     viewDataAccunt(account);
 }
+
 int viewDataAccunt(Account *account)
 {
 
-    printf("------------ ACCOUNT DATA ------------\n");
+    printf("------------ ACCOUNT DATA ------------\n\n");
     printf("Agency: %s\n", account->Agency);
     printf("Account Number: %s\n", account->Number);
     printf("Account Type: %s\n", accountTypesStg[account->Type]);
     printf("Balance: %.2lf\n", account->Balance);
-    printf("------- ACCOUNT HOLDER DETAILS -------\n");
-    printNewCustomer(&account->Client);
+    printf("------- ACCOUNT HOLDER DETAILS -------\n\n");
+    //printNewCustomer(&account->Client);
     return 1;
 }
 
