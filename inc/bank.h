@@ -1,6 +1,9 @@
 #if !defined(BANK)
 #define BANK
 #include "customer.h"
+
+#define MAX_ACC_LIST_SIZE   500
+
 typedef enum AccountType
 {
     Savings     = 0,
@@ -20,14 +23,16 @@ typedef struct Account
 
 }Account;
 
+Account accList[MAX_ACC_LIST_SIZE];
+
 Account *createNewAccount(void);
-Account setNewAccount(struct Account* account, Customer* customer, double balance, char *number,char *agency, int type);
+Account setNewAccount(Account* account, Customer* customer, double balance, char *number,char *agency, int type);
 int initBank();
-int addNewAccount();
+int addNewAccount(Account *account, Customer *customer, double balance, char *number, char *agency, int type);
 void transact();
 void editAcconut();
 void deletAcconut();
-void viewListAccunt();
-void viewDataAccunt(Account *account);
+void viewListAccunt(Account *account);
+int viewDataAccunt(Account *account);
 
 #endif // BANK

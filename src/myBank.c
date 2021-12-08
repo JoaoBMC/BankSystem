@@ -14,9 +14,10 @@ int main(int argc, char const *argv[])
     
     struct Account* acc = createNewAccount();
      
-    setNewAccount(acc ,
-     setNewCustomer(20325649942,"joao batista menezes chagas",addBirth(7,3,1996),"016.979.703-11",999714002,'M'), 1000,"0003123","456-1",University);
-    viewDataAccunt(acc);
+    addNewAccount(acc ,setNewCustomer(20325649942,"joao batista menezes chagas",addBirth(7,3,1996),"016.979.703-11",999714002,'M'), 1000,"0003123","456-1",University);
+    addNewAccount(acc ,setNewCustomer(44326649942,"Carlos almeida",addBirth(6,7,1998),"061.433.882-41",988641235,'f'), 5500,"00553155","9982-5",Salary);
+    viewDataAccunt(&accList[0]);
+    viewDataAccunt(&accList[1]);
 
     return 0;
 }
