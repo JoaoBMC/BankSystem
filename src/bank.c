@@ -1,30 +1,27 @@
-#include"bank.h"
+#include "bank.h"
 #include "menu.h"
-#include "customer.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 char option;
-typedef struct Account
-{
-    Customer Client;
-    double Balance;
-    char *Number;
-    char *Agency;
-    char Type;
 
-}Account;
+int lastAcc = 0;
 
+struct Customer;
 static void operation(char option);
-
+static char accountTypesStg[][10] = {
+    "Savings",
+    "Salary",
+    "Checking",
+    "University"};
 Account *createNewAccount(void)
 {
-    Account* account;
+    Account *account;
     account = malloc(sizeof(Account));
     return account;
 }
 
-int delAccount(Account* account)
+int delAccount(Account *account)
 {
     free(account);
     return SUCCESS;
@@ -32,18 +29,23 @@ int delAccount(Account* account)
 
 int initBank()
 {
-   operation(init_menu());
+    operation(init_menu());
 }
 
-
-int addNewAccount(Account* Account)
+int addNewAccount(Account *account, Customer *customer, double balance, char *number, char *agency, int type)
 {
-    
-    
-    return SUCCESS;
+    if (lastAcc < MAX_ACC_LIST_SIZE)
+    {
+        accList[lastAcc++] = setNewAccount(account, customer, balance, number, agency, type);
+        return SUCCESS;
+    }
+    else
+        return ERROR;
 }
-Account setNewAccount(Account* account, double balance, char *number,char *agency, char type)
+
+Account setNewAccount(Account *account, Customer *customer, double balance, char *number, char *agency, int type)
 {
+    account->Client = *customer;
     account->Balance = balance;
     account->Number = number;
     account->Agency = agency;
@@ -53,23 +55,39 @@ Account setNewAccount(Account* account, double balance, char *number,char *agenc
 
 void transact()
 {
-
 }
 void editAcconut()
 {
-
 }
-void deletAcconut()
+int delAcconut(char *NumberAcc)
+{
+    for (int i = 0; i < lastAcc; i++)
+    {
+        if (accList[i].Number == NumberAcc)
+        {
+            for (int j = i; j < lastAcc - 1; j++)
+                accList[j].Number = accList[j + 1].Number;
+            lastAcc--;
+        }
+    }
+}
+
+void viewListAccunt(Account *account)
+{
+    viewDataAccunt(account);
+}
+
+int viewDataAccunt(Account *account)
 {
 
-}
-void viewListAccunt()
-{
-
-}
-void viewDataAccunt()
-{
-
+    printf("------------ ACCOUNT DATA ------------\n\n");
+    printf("Agency: %s\n", account->Agency);
+    printf("Account Number: %s\n", account->Number);
+    printf("Account Type: %s\n", accountTypesStg[account->Type]);
+    printf("Balance: %.2lf\n", account->Balance);
+    printf("------- ACCOUNT HOLDER DETAILS -------\n\n");
+    //printNewCustomer(&account->Client);
+    return 1;
 }
 
 static void operation(char option)
@@ -97,10 +115,9 @@ static void operation(char option)
     case '7':
         exit(0);
         break;
-    
-    
+
     default:
-    option = ' ';
+        option = ' ';
         break;
     }
 }
