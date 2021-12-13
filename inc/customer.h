@@ -1,7 +1,7 @@
 #if !defined(CUSTOMER_H)
 #define CUSTOMER_H
 
-#define GENRE_SIZE 6
+#define GENRE_SIZE 7
 
 typedef enum Genre
 {
@@ -72,7 +72,7 @@ int setCustomerGenre(Customer *Customer, char Genre);
 
 
 Customer *setNewCustomer(double ID, char *name,Birth *Birth, char* cpf, double phone, char genre);
-
+int changeCustomer(Customer *customer, double ID, char *name, struct Birth *birth, char *cpf, double phone, char genre);
 void printNewCustomer(Customer *Customer);
 
 Birth* addBirth(int day, int month, int year);

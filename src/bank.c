@@ -53,17 +53,38 @@ Account setNewAccount(Account *account, Customer *customer, double balance, char
     return *account;
 }
 
-void transact()
-{
-}
-void editAcconut()
-{
-}
-int delAcconut(char *NumberAcc)
+int transact(char *accNumber1, char *accNumber2, double value)
 {
     for (int i = 0; i < lastAcc; i++)
     {
-        if (accList[i].Number == NumberAcc)
+        if (accList[i].Number == accNumber1 && accList[i].Balance >= value)
+        {
+            for (int j = 0; j < lastAcc; j++)
+            {
+                if (accList[j].Number == accNumber2)
+                {
+                    accList[i].Balance -= value;
+                    accList[j].Balance += value;
+                    return SUCCESS;
+                }
+            }
+        }
+    }
+}
+int editAcconut(Account *account, double ID, char *name, Birth *Birth, char *cpf, double phone, char genre)
+{
+    if (changeCustomer(&account->Client, ID, name, Birth, cpf, phone, genre))
+    {
+        return SUCCESS;
+    }
+    else
+        return ERROR;
+}
+int delAcconut(char *accNumber)
+{
+    for (int i = 0; i < lastAcc; i++)
+    {
+        if (accList[i].Number == accNumber)
         {
             for (int j = i; j < lastAcc - 1; j++)
                 accList[j].Number = accList[j + 1].Number;
@@ -72,22 +93,30 @@ int delAcconut(char *NumberAcc)
     }
 }
 
-void viewListAccunt(Account *account)
+int viewListAccunt()
 {
-    viewDataAccunt(account);
+    for (int i = 0; i < lastAcc; i++)
+    {
+        printf("\n");
+        viewDataAccunt(&accList[i]);
+        printf("\n");
+    }
+    return SUCCESS;
 }
 
 int viewDataAccunt(Account *account)
 {
 
-    printf("------------ ACCOUNT DATA ------------\n\n");
-    printf("Agency: %s\n", account->Agency);
-    printf("Account Number: %s\n", account->Number);
-    printf("Account Type: %s\n", accountTypesStg[account->Type]);
-    printf("Balance: %.2lf\n", account->Balance);
-    printf("------- ACCOUNT HOLDER DETAILS -------\n\n");
-    //printNewCustomer(&account->Client);
-    return 1;
+    printf("\n------------ ACCOUNT DATA ------------\n");
+    printf(" Agency: %s\n", account->Agency);
+    printf(" Account Number: %s\n", account->Number);
+    printf(" Account Type: %s\n", accountTypesStg[account->Type]);
+    printf(" Balance: %.2lf\n", account->Balance);
+
+    printf("------- ACCOUNT HOLDER DETAILS -------\n");
+    printNewCustomer(&account->Client);
+
+    return SUCCESS;
 }
 
 static void operation(char option)

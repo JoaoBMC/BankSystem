@@ -29,10 +29,10 @@ Account *createNewAccount(void);
 Account setNewAccount(Account* account, Customer* customer, double balance, char *number,char *agency, int type);
 int initBank();
 int addNewAccount(Account *account, Customer *customer, double balance, char *number, char *agency, int type);
-void transact();
-void editAcconut();
+int transact(char *accNumber1, char *accNumber2, double value);
+int editAcconut(Account *account, double ID, char *name, Birth *Birth, char *cpf, double phone, char genre);
 int delAcconut(char *NumberAcc);
-void viewListAccunt(Account *account);
+int viewListAccunt();
 int viewDataAccunt(Account *account);
 
 #endif // BANK

@@ -1,7 +1,7 @@
 #include <stdio.h>
+#include "menu.h"
 
 char option;
-
 
 static void printMenu();
 static int recieveOpction();
@@ -23,7 +23,6 @@ static void printMenu()
     printf("| 6 - VISUALIZAR LISTA DE CLIENTES              |\n");
     printf("| 7 - SAIR                                      |\n");
     printf("|-----------------------------------------------|\n");
-
 }
 
 static int recieveOpction()
@@ -50,29 +49,33 @@ void titleFunction()
     cls;
     switch (option)
     {
-    case '1':
+    case NEW_ACCOUNT:
         printf("\n\tCRIANDO UMA NOVA CONTA\n\n\n");
         break;
-    case '2':
-        printf("\n\tATUALIZANDO UMA NOVA CONTA\n\n\n");
+    case UPDATA_ACCOUNT:
+        printf("\n\tATUALIZANDO UMA CONTA\n\n\n");
         break;
-    case '3':
+    case TRANSACT:
         printf("\n\tTRANSFERENCIAS\n\n\n");
         break;
-    case '4':
+    case EDIT_ACCOUNT:
         printf("\n\tDETALHES DA CONTA\n\n\n");
         break;
-    case '5':
+    case DELETE_ACCOUNT:
         printf("\n\tREMOVENDO UMA CONTA\n\n\n");
         break;
-    case '6':
+    case VIEW_LIST_ACCOUNT:
         printf("\n\tLISTA DE CLIENTES\n\n\n");
         break;
-    case '7':
-        printf("\n\tSAINDO...\n\n\n");
-        
+    case VIEW_DATA_ACCOUNT:
+        printf("\n\tVISUALIZAR DE CLIENTES\n\n\n");
+
         break;
-    
+    case EXIT:
+        printf("\n\tSAINDO...\n\n\n");
+
+        break;
+
     default:
         printf("Valor invalido!");
         option = ' ';

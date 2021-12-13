@@ -18,16 +18,10 @@ int main(int argc, char const *argv[])
     addNewAccount(acc ,setNewCustomer(44326649942,"Carlos almeida",addBirth(6,7,1998),"061.433.882-41",988641235,'f'), 5500,"2","9982-5",Salary);
     addNewAccount(acc ,setNewCustomer(20325649943,"joao batista menezes chagas",addBirth(7,3,1996),"016.979.703-11",999714002,'M'), 1000,"3","456-1",University);
     addNewAccount(acc ,setNewCustomer(44326649944,"Carlos almeida",addBirth(6,7,1998),"061.433.882-41",988641235,'f'), 5500,"4","9982-5",Salary);
-    for (int i = 0; i < lastAcc; i++)
-    {
-        viewDataAccunt(&accList[i]);
-    }
-    printf("\n\n\n\n");
-    delAcconut("2");
-    for (int i = 0; i < lastAcc; i++)
-    {
-        viewDataAccunt(&accList[i]);
-    }
+    
+    viewDataAccunt(&accList[2]);
+    editAcconut(&accList[2],20325649941,"claiton andre salvo",addBirth(7,8,1995),"016.797.703-11",998884002,'M');
+    viewDataAccunt(&accList[2]);
     
     return 0;
 }
