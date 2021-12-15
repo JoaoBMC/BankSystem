@@ -69,11 +69,9 @@ void titleFunction()
         break;
     case VIEW_DATA_ACCOUNT:
         printf("\n\tVISUALIZAR DE CLIENTES\n\n\n");
-
         break;
     case EXIT:
         printf("\n\tSAINDO...\n\n\n");
-
         break;
 
     default:
@@ -82,3 +80,4 @@ void titleFunction()
         break;
     }
 }
+
