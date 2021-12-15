@@ -71,6 +71,7 @@ int transact(char *accNumber1, char *accNumber2, double value)
         }
     }
 }
+
 int editAcconut(Account *account, double ID, char *name, Birth *Birth, char *cpf, double phone, char genre)
 {
     if (changeCustomer(&account->Client, ID, name, Birth, cpf, phone, genre))
@@ -80,6 +81,7 @@ int editAcconut(Account *account, double ID, char *name, Birth *Birth, char *cpf
     else
         return ERROR;
 }
+
 int delAcconut(char *accNumber)
 {
     for (int i = 0; i < lastAcc; i++)
@@ -123,26 +125,21 @@ static void operation(char option)
 {
     switch (option)
     {
-    case '1':
-
+    case NEW_ACCOUNT:
         break;
-    case '2':
-
+    case UPDATA_ACCOUNT:
         break;
-    case '3':
-
+    case TRANSACT:
         break;
-    case '4':
-
+    case EDIT_ACCOUNT:
         break;
-    case '5':
-
+    case DELETE_ACCOUNT:
         break;
-    case '6':
-
+    case VIEW_LIST_ACCOUNT:
         break;
-    case '7':
-        exit(0);
+    case VIEW_DATA_ACCOUNT:
+        break;
+    case EXIT:
         break;
 
     default:
