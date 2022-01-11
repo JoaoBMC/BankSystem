@@ -158,3 +158,4 @@ int changeCustomer(Customer *customer, double ID, char *name, struct Birth *birt
   else
     return ERROR;
 }
+

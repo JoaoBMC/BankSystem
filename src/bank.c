@@ -2,10 +2,14 @@
 #include "menu.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
+#include <string.h>
 
 char option;
-
+struct Account *acc;
 int lastAcc = 0;
+int lastDigit = 0;
+char lastAccNumber[] = "000000";
 
 struct Customer;
 static void operation(char option);
@@ -14,11 +18,35 @@ static char accountTypesStg[][10] = {
     "Salary",
     "Checking",
     "University"};
+
 Account *createNewAccount(void)
 {
     Account *account;
     account = malloc(sizeof(Account));
     return account;
+}
+
+void newAccNumeberGenerator(char *number)
+{
+    //char number[] = "";
+    int digit = sizeof(lastAccNumber);
+    int accNumber;
+    if (lastDigit > 9 && digit >= 0)
+    {
+        digit--;
+        lastDigit = 0;
+    }
+    if (digit < 0)
+    {
+        printf("MAXIMO DE CLIENTE!");
+    }
+    else
+    {
+        lastDigit++;
+        lastAccNumber[digit] = lastDigit + '0';
+        memcpy(number, lastAccNumber, sizeof(lastAccNumber));
+        
+    }
 }
 
 int delAccount(Account *account)
@@ -30,19 +58,8 @@ int delAccount(Account *account)
 int initBank()
 {
     operation(init_menu());
+    acc = createNewAccount();
 }
-
-int addNewAccount(Account *account, Customer *customer, double balance, char *number, char *agency, int type)
-{
-    if (lastAcc < MAX_ACC_LIST_SIZE)
-    {
-        accList[lastAcc++] = setNewAccount(account, customer, balance, number, agency, type);
-        return SUCCESS;
-    }
-    else
-        return ERROR;
-}
-
 Account setNewAccount(Account *account, Customer *customer, double balance, char *number, char *agency, int type)
 {
     account->Client = *customer;
@@ -51,6 +68,18 @@ Account setNewAccount(Account *account, Customer *customer, double balance, char
     account->Agency = agency;
     account->Type = type;
     return *account;
+}
+int addNewAccount(Account *account, Customer *customer, double balance,char *agency, int type)
+{
+    if (lastAcc < MAX_ACC_LIST_SIZE)
+    {
+        char number[] = "000000";
+        newAccNumeberGenerator(number);
+        accList[lastAcc++] = setNewAccount(account, customer, balance, number, agency, type);
+        return SUCCESS;
+    }
+    else
+        return ERROR;
 }
 
 int transact(char *accNumber1, char *accNumber2, double value)
@@ -120,12 +149,19 @@ int viewDataAccunt(Account *account)
 
     return SUCCESS;
 }
+int newAccount()
+{   
+    Customer newCust;
+    
+
+}
 
 static void operation(char option)
 {
     switch (option)
     {
     case NEW_ACCOUNT:
+        
         break;
     case UPDATA_ACCOUNT:
         break;
@@ -147,3 +183,4 @@ static void operation(char option)
         break;
     }
 }
+
