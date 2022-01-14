@@ -14,5 +14,6 @@ typedef enum SelectType{
 
 char init_menu();
 void titleFunction();
+void printAccTypes();
 
 #endif // MENU_H

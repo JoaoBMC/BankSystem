@@ -60,7 +60,7 @@ int initBank()
     operation(init_menu());
     acc = createNewAccount();
 }
-Account setNewAccount(Account *account, Customer *customer, double balance, char *number, char *agency, int type)
+Account setNewAccount(Account *account,Customer *customer ,double balance, char *number, char *agency, int type)
 {
     account->Client = *customer;
     account->Balance = balance;
@@ -69,7 +69,7 @@ Account setNewAccount(Account *account, Customer *customer, double balance, char
     account->Type = type;
     return *account;
 }
-int addNewAccount(Account *account, Customer *customer, double balance,char *agency, int type)
+int addNewAccount(Account *account,Customer *customer, double balance,char *agency, int type)
 {
     if (lastAcc < MAX_ACC_LIST_SIZE)
     {
@@ -150,9 +150,31 @@ int viewDataAccunt(Account *account)
     return SUCCESS;
 }
 int newAccount()
-{   
-    Customer newCust;
+{ 
+    Account *newAcc = createNewAccount();
+    Customer *newCus = newCustomer();
+    char *aux;
+    printf("ID: ");
+    scanf("%lf",&newCus->ID);  
+    printf("Nome: ");
+    scanf("%s",&newCus->Name);
+   // printf("%s",newCus->Name);
+    printf("Data de Nascimento (dd/mm/aaaa): ");
+    scanf("%d%d%d",&newCus->Birth.day, &newCus->Birth.month, &newCus->Birth.year);  
+    printf("CPF: ");
+    scanf("%s",&newCus->CPF);
+    printf("Tel: ");
+    scanf("%lf",&newCus->Phone);  
+    printf("Genero (M/F): ");
+    scanf("%s",&newCus->Genre);
+    printf("Valor do primeiro deposito: ");
+    scanf("%lf",&newAcc->Balance);
+    printAccTypes();
+    printf("Tipo de Conta: ");
+    scanf("%d", &newAcc->Type);
+   // newAcc->Client = *newCus;
     
+    addNewAccount(newAcc,newCus,newAcc->Balance,"1425-5",newAcc->Type);
 
 }
 
@@ -161,7 +183,7 @@ static void operation(char option)
     switch (option)
     {
     case NEW_ACCOUNT:
-        
+        newAccount();
         break;
     case UPDATA_ACCOUNT:
         break;

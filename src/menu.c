@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "menu.h"
 
-char option;
+int option;
 
 static void printMenu();
 static int recieveOpction();
@@ -28,7 +28,7 @@ static void printMenu()
 static int recieveOpction()
 {
     printf("Option: ");
-    scanf("%c", &option);
+    scanf("%d", &option);
     return option;
 }
 static void cls()
@@ -43,7 +43,10 @@ char init_menu()
     titleFunction();
     return option;
 }
-
+void printAccTypes()
+{
+    printf("\n 1- Savings\n 2- Salary\n 3- Checking\n 4- University\n ");
+}
 void titleFunction()
 {
     cls;
