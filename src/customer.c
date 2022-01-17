@@ -5,8 +5,6 @@
 
 char genresStg[][GENRE_SIZE] = {"Male", "Female"};
 
-static int getGenre(char setGenre);
-
 Birth *addBirth(int day, int month, int year)
 {
   Birth *birth;
@@ -17,7 +15,7 @@ Birth *addBirth(int day, int month, int year)
   return birth;
 }
 
-static int getGenre(char setGenre)
+int getGenre(char setGenre)
 {
   if (setGenre == 'M' || setGenre == 'm')
     return Male;

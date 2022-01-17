@@ -56,7 +56,7 @@ int getCustomerGenre(Customer *Customer);
 /*Seta ID do Customer*/
 int setCustomerID(Customer *Customer, double ID);
 /*Seta Nome do Customer*/
-int setCustomerName(Customer *Customer, char* Name);
+int setCustomerName(Customer *Customer, char *Name);
 /*Seta Dia do Nascimento do Customer*/
 int setCustomerBirthDay(Customer *Customer, int BirthDay);
 /*Seta Mês do Nascimento do Customer*/
@@ -64,7 +64,7 @@ int setCustomerBirthMonth(Customer *Customer, int BirthMonth);
 /*Seta Ano do Nascimento do Customer*/
 int setCustomerBirthYear(Customer *Customer, int BirthYear);
 /*Seta CPF do Customer*/
-int setCustomerCPF(Customer *Customer, char* CPF);
+int setCustomerCPF(Customer *Customer, char *CPF);
 /*Seta Telefone do Customer*/
 int setCustomerPhone(Customer *Customer, double Phone);
 /*Seta Genero do Customer*/
@@ -74,6 +74,7 @@ int setCustomerGenre(Customer *Customer, char Genre);
 Customer *setNewCustomer(double ID, char *name,Birth *Birth, char* cpf, double phone, char genre);
 int changeCustomer(Customer *customer, double ID, char *name, struct Birth *birth, char *cpf, double phone, char genre);
 void printNewCustomer(Customer *Customer);
+int getGenre(char setGenre);
 
 Birth* addBirth(int day, int month, int year);
 #endif // Customer_H

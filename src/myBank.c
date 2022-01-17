@@ -10,19 +10,10 @@
 #include "bank.h"
 #include <string.h>
 
-void teste(char *cc)
-{
-    char ch[] = "55",c ;
-    int i = 8;
-    c = i+'0';
-    ch[0] = c;
-    memcpy(cc,ch,2);
-}
 
 int main(int argc, char const *argv[])
 {
-    //initBank();
-    //viewListAccunt();
-    
+    initBank("1423-5");
+    viewListAccunt();
     return 0;
 }

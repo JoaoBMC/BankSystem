@@ -9,7 +9,8 @@ char option;
 struct Account *acc;
 int lastAcc = 0;
 int lastDigit = 0;
-char lastAccNumber[] = "000000";
+char lastAccNumber[] = "000299";
+char *agency;
 
 struct Customer;
 static void operation(char option);
@@ -55,8 +56,9 @@ int delAccount(Account *account)
     return SUCCESS;
 }
 
-int initBank()
+int initBank(char *agencyNumber)
 {
+    agency = agencyNumber;
     operation(init_menu());
     acc = createNewAccount();
 }
@@ -75,6 +77,7 @@ int addNewAccount(Account *account,Customer *customer, double balance,char *agen
     {
         char number[] = "000000";
         newAccNumeberGenerator(number);
+        printf("\n\nN: %s",number);
         accList[lastAcc++] = setNewAccount(account, customer, balance, number, agency, type);
         return SUCCESS;
     }
@@ -141,7 +144,7 @@ int viewDataAccunt(Account *account)
     printf("\n------------ ACCOUNT DATA ------------\n");
     printf(" Agency: %s\n", account->Agency);
     printf(" Account Number: %s\n", account->Number);
-    printf(" Account Type: %s\n", accountTypesStg[account->Type]);
+    printf(" Account Type: %s\n", accountTypesStg[account->Type -1]);
     printf(" Balance: %.2lf\n", account->Balance);
 
     printf("------- ACCOUNT HOLDER DETAILS -------\n");
@@ -149,24 +152,28 @@ int viewDataAccunt(Account *account)
 
     return SUCCESS;
 }
+
 int newAccount()
 { 
     Account *newAcc = createNewAccount();
-    Customer *newCus = newCustomer();
-    char *aux;
+    Customer newCus;
+     char gen; 
     printf("ID: ");
-    scanf("%lf",&newCus->ID);  
+    scanf("%lf",&newCus.ID);
+    fflush(stdin);  
     printf("Nome: ");
-    scanf("%s",&newCus->Name);
-   // printf("%s",newCus->Name);
+    newCus.Name = gets(malloc(100));
     printf("Data de Nascimento (dd/mm/aaaa): ");
-    scanf("%d%d%d",&newCus->Birth.day, &newCus->Birth.month, &newCus->Birth.year);  
+    scanf("%d%d%d",&newCus.Birth.day, &newCus.Birth.month, &newCus.Birth.year);  
+    fflush(stdin); 
     printf("CPF: ");
-    scanf("%s",&newCus->CPF);
+    newCus.CPF = gets(malloc(15));
     printf("Tel: ");
-    scanf("%lf",&newCus->Phone);  
+    scanf("%lf",&newCus.Phone); 
+    fflush(stdin); 
     printf("Genero (M/F): ");
-    scanf("%s",&newCus->Genre);
+    scanf("%c",&gen);
+    newCus.Genre = getGenre(gen);
     printf("Valor do primeiro deposito: ");
     scanf("%lf",&newAcc->Balance);
     printAccTypes();
@@ -174,7 +181,7 @@ int newAccount()
     scanf("%d", &newAcc->Type);
    // newAcc->Client = *newCus;
     
-    addNewAccount(newAcc,newCus,newAcc->Balance,"1425-5",newAcc->Type);
+    addNewAccount(newAcc,&newCus,newAcc->Balance,agency,newAcc->Type);
 
 }
 

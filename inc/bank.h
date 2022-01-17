@@ -27,7 +27,7 @@ Account accList[MAX_ACC_LIST_SIZE];
 
 Account *createNewAccount(void);
 //Account setNewAccount(Account* account, Customer* customer, double balance, char *number,char *agency, int type);
-int initBank();
+int initBank(char *agencyNumber);
 //int addNewAccount(Account *account, double balances, char *agency, int type);
 int transact(char *accNumber1, char *accNumber2, double value);
 int editAcconut(Account *account, double ID, char *name, Birth *Birth, char *cpf, double phone, char genre);
